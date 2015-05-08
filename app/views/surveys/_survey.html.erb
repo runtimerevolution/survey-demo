@@ -1,0 +1,12 @@
+<div class="survey">
+  <p>
+    <%= link_to survey_path(survey.id), method: :delete do %>
+      <i class="fa fa-times"></i>
+    <% end %>
+    <%= link_to edit_survey_path(survey.id) do %>
+      <i class="fa fa-pencil-square-o"></i>
+    <% end %>
+    <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %>
+    <%= "- #{survey.description}" %>
+  </p>
+</div>

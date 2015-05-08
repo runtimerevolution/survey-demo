@@ -1,0 +1,5 @@
+en:
+  surveys_controller:
+    create: Survey has been successfully created
+    update: Survey has been successfully updated
+    destroy: Survey has been successfully destroyed

@@ -1,0 +1,53 @@
+  <%= form_for(@survey, :url => survey_scope(@survey)) do |f| %>
+
+    <div class="field">
+      <div class="row">
+        <div class="form-group col-sm-4">
+          <%= f.label :name %>
+          <%= f.text_field :name, required: true, class: 'form-control' %>
+        </div>
+        <div class="form-group col-sm-4">
+          <%= f.label :attempts_number, "Maximum number of attempts (0 is infinite)" %>
+          <%= f.number_field :attempts_number, required: true, min: 0, class: 'form-control' %>
+        </div>
+        <div class="form-group col-sm-4">
+          <%= f.label :active %>
+          <%= f.select :active, ["true", "false"], {}, required: true, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <%= f.label :description %>
+          <%= f.text_area :description, :size => "100x5", required: true, class: 'form-control', style: 'max-width: 100%;' %>
+        </div>
+      </div>
+      
+      <div class="appendable">
+        <%= f.fields_for :questions do |builder| %>
+          <%= render "question_fields", :f => builder %>
+        <% end %>
+      </div>
+      <br/>
+      <%= link_to_add_field "Add a new Question", f, :questions %>
+    </div>
+  <%= f.submit 'Submit', class: 'pull-right btn btn-primary' %>
+  <% end -%>
+</div>
+
+<script type="text/javascript">
+  // remove attachment field
+  function removeField(link) {
+    $(link).prev("input[type=hidden]").val("true");
+    tag = $(link).closest(".field")
+    tag.hide('slow', function(){ $(this).remove();});
+  }
+
+  // add attachment field
+  function addField(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+    var html = $(content.replace(regexp, new_id)).hide();
+    var target = $(link).closest("div.field").find(".appendable").first();
+    html.appendTo(target).slideDown("slow");
+  }
+</script>
