@@ -2,10 +2,14 @@ class AttemptsController < ApplicationController
 
   helper 'surveys'
 
-  before_filter :load_survey
+  before_filter :load_survey, only: [:new, :create]
 
   def index
     @surveys = Survey::Survey.active
+  end
+
+  def show
+    @attempt = Survey::Attempt.find_by(id: params[:id])
   end
 
   def new
@@ -21,7 +25,8 @@ class AttemptsController < ApplicationController
     @attempt = @survey.attempts.new(params_whitelist)
     @attempt.participant = current_user
     if @attempt.valid? && @attempt.save
-      redirect_to surveys_path, notice: I18n.t("attempts_controller.#{action_name}")
+      correct_options_text = @survey.correct_options.present? ? 'Bellow are the correct answers marked in bold' : ''
+      redirect_to attempt_path(@attempt.id), notice: "Congratulation for answering #{@survey.name}. #{correct_options_text}"
     else
       build_flash(@attempt)   
       @participant = current_user

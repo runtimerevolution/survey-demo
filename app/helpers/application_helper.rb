@@ -15,4 +15,20 @@ module ApplicationHelper
       name
     end
   end
+
+  def the_chosen_one? answer, option
+    answer.option_id == option.id
+  end
+
+  def number_of_people_who_also_answered option_id
+    count = number_of_people_who_also_answered_count(option_id)
+    "(#{pluralize(count, 'person')} answered this)"
+  end
+
+
+  private
+  
+  def number_of_people_who_also_answered_count option_id
+    Survey::Answer.where(option_id: option_id).count
+  end
 end

@@ -1,6 +1,6 @@
 <div class="survey">
   <p>
-    <%= link_to survey_path(survey.id), method: :delete do %>
+    <%= link_to survey_path(survey.id), method: :delete, data: {confirm: "Are you sure you want to delete this survey?"} do %>
       <i class="fa fa-times"></i>
     <% end %>
     <%= link_to edit_survey_path(survey.id) do %>
