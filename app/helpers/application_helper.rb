@@ -25,6 +25,9 @@ module ApplicationHelper
     "(#{pluralize(count, 'person')} answered this)"
   end
 
+  def is_active?(link_path)
+    current_page?(link_path) ? 'active' : nil
+  end
 
   private
   
