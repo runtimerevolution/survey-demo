@@ -53,8 +53,9 @@
     html.appendTo(target).slideDown({
       duration: 'slow',
       progress: function () {
-        last_height = $(this).outerHeight(true) - last_height;
-        $(window).scrollTop( $(window).scrollTop() + last_height );
+        delta = $(this).outerHeight(true) - last_height
+        last_height = $(this).outerHeight(true);
+        $(window).scrollTop( $(window).scrollTop() + delta );
       },
       complete: function () {
         $(this).find('input[type=text]').focus();
