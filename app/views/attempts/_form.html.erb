@@ -1,4 +1,6 @@
 <h1><%= @survey.name %></h1>
+<h5><%= @survey.description %></h5>
+<hr>
 <%= form_for(@attempt, :url => attempt_scope(@attempt)) do |f| %>
   <%= hidden_field_tag :survey_id, @survey.id %>
   <%= f.fields_for :answers, get_answer_fields(@attempt) do |answer_fields| %>

@@ -10,3 +10,13 @@ a:focus {
 .survey-form {
   padding-bottom: 40px;
 }
+
+.answers-number {
+  padding-left: 20px;
+  padding-bottom: 10px;
+  color: grey;
+
+  .number {
+    font-size: 15px;
+  }
+}

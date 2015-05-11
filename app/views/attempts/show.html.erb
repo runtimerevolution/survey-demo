@@ -1,5 +1,7 @@
 <div class="container">
   <h1><%= @attempt.survey.name %></h1>
+  <h5><%= @attempt.survey.description %></h5>
+  <hr>
   <% @attempt.answers.each do |answer| %>
     <p><%= answer.question.text %></p>
     <% answer.question.options.each do |option| %>
@@ -11,8 +13,8 @@
           <% else %>
             <%= option.text %>
           <% end %>
-          <%= number_of_people_who_also_answered(option.id) %>
         </label>
+        <p class="answers-number"> <%= number_of_people_who_also_answered(option.id) %> </p>
       </div>
     <% end %>
   <% end %>

@@ -42,6 +42,15 @@ module SurveysHelper
     attempt.survey.questions.map { |q| Survey::Answer.new(question_id: q.id) }
   end
 
+  def the_chosen_one? answer, option
+    answer.option_id == option.id
+  end
+
+  def number_of_people_who_also_answered option_id
+    count = number_of_people_who_also_answered_count(option_id)
+    "<span class='number'> #{count} </span> #{'answer'.pluralize}".html_safe
+  end
+
   private
 
   def __link_to_function(name, on_click_event, opts={})
