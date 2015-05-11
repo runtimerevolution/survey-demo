@@ -49,6 +49,7 @@
     var html = $(content.replace(regexp, new_id)).hide();
     var target = $(link).closest("div.field").find(".appendable").first();
     html.appendTo(target).slideDown("slow", function () {
+      $(this).find('input[type=text]').focus();
       $('html,body').animate({
         scrollTop: $(window).scrollTop() + html.outerHeight(true) + 'px'
       }, 400);
