@@ -1,17 +1,17 @@
-<div class="field clearfix">
+<div class='field clearfix'>
   <hr/>
   <h4>Question</h4>
-  <div class="row">
-    <div class="form-group col-sm-4">
+  <div class='row'>
+    <div class='form-group col-sm-4'>
       <%= f.label :text, class: 'sr-only' %>
       <%= f.text_field :text, placeholder: 'question', class: 'form-control' %>
     </div>
   </div>
-  <ol class="appendable options">
+  <ol class='appendable options'>
     <%= f.fields_for :options do |builder| %>
-      <%= render "option_fields", :f => builder %>
+      <%= render 'option_fields', :f => builder %>
     <% end -%>
   </ol>
-  <%= link_to_add_field "Add option", f, :options %>
-  <%= link_to_remove_field "Remove question", f %>
+  <%= link_to_add_field 'Add option', f, :options %>
+  <%= link_to_remove_field 'Remove question', f %>
 </div>
