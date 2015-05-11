@@ -3,7 +3,7 @@ module SurveysHelper
     f.hidden_field(:_destroy) +
     __link_to_function(raw(name), "removeField(this)", :id =>"remove-attach", class: 'btn btn-default')
   end
-  #"survey_attempt"=> {"answers_attributes"=>{"0"=>{"question_id"=>"1", "option_id"=>"2"}, "1"=>{"question_id"=>"2", "option_id"=>"5"}}}
+
   def new_survey
     new_survey_path
   end
