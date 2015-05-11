@@ -10,10 +10,11 @@ class AttemptsController < ApplicationController
 
   def show
     @attempt = Survey::Attempt.find_by(id: params[:id])
+    render :access_error if current_user.id != @attempt.participant_id
   end
 
   def new
-    @participant = current_user # you have to decide what to do here
+    @participant = current_user
 
     unless @survey.nil?
       @attempt = @survey.attempts.new
@@ -26,7 +27,7 @@ class AttemptsController < ApplicationController
     @attempt.participant = current_user
     if @attempt.valid? && @attempt.save
       correct_options_text = @survey.correct_options.present? ? 'Bellow are the correct answers marked in bold' : ''
-      redirect_to attempt_path(@attempt.id), notice: "Congratulation for answering #{@survey.name}. #{correct_options_text}"
+      redirect_to attempt_path(@attempt.id), notice: "Congratulation for answering #{@survey.name}! #{correct_options_text}"
     else
       build_flash(@attempt)   
       @participant = current_user

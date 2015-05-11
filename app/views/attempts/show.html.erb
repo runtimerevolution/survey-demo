@@ -6,12 +6,12 @@
       <div class="radio">
         <label>
           <%= radio_button_tag '', '', the_chosen_one?(answer, option), disabled: true %>
-          <%= option.text %>
           <% if option.correct %>
-            <b> <%= number_of_people_who_also_answered(option.id) %> <b>
+            <b> <%= option.text %> </b>
           <% else %>
-            <%= number_of_people_who_also_answered(option.id) %>
+            <%= option.text %>
           <% end %>
+          <%= number_of_people_who_also_answered(option.id) %>
         </label>
       </div>
     <% end %>
