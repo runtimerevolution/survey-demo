@@ -39,7 +39,7 @@
   function removeField(link) {
     $(link).prev("input[type=hidden]").val("true");
     tag = $(link).closest(".field")
-    tag.hide('slow', function(){ $(this).remove();});
+    tag.hide('slow');
   }
 
   // add attachment field
