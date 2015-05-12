@@ -1,16 +1,24 @@
-<h1><%= @survey.name %></h1>
-<h5><%= @survey.description %></h5>
+<h2>
+  <%= @survey.name %>
+  <p><small><%= @attempt.survey.description %></small></p>
+</h2>
 <hr>
 <%= form_for(@attempt, :url => attempt_scope(@attempt)) do |f| %>
   <%= hidden_field_tag :survey_id, @survey.id %>
-  <%= f.fields_for :answers, get_answer_fields(@attempt) do |answer_fields| %>
-    <% question = answer_fields.object.question %>
-    <p><%= question.text %></p>
-    <%= collection_radio_buttons('survey_attempt[answers_attributes]', question.id, question.options, :id, :text) do |b| %>
-      <div class="radio">
-        <%= b.label { b.radio_button + b.text } %>
-      </div>
-    <% end %>
-  <% end -%>
+  <ol class="questions">
+    <%= f.fields_for :answers, get_answer_fields(@attempt) do |answer_fields| %>
+      <li>
+        <% question = answer_fields.object.question %>
+        <p class="question"><%= question.text %></p>
+        <ul class="options">
+          <%= collection_radio_buttons('survey_attempt[answers_attributes]', question.id, question.options, :id, :text) do |b| %>
+            <li class="radio">
+              <%= b.label { b.radio_button + b.text } %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end -%>
+  </ol>
   <%= f.submit "Submit", class: 'btn btn-default' %>
 <% end -%>

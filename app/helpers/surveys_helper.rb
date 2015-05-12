@@ -43,12 +43,26 @@ module SurveysHelper
   end
 
   def the_chosen_one? answer, option
-    answer.option_id == option.id
+    answer.option_id == option.id ? 'chosen' : nil
   end
 
   def number_of_people_who_also_answered option_id
     count = number_of_people_who_also_answered_count(option_id)
     "<span class='number'> #{count} </span> #{'answer'.pluralize}".html_safe
+  end
+
+  def question_has_correct_answers question
+    question.correct_options.present?
+  end
+
+  def get_color_of_option answer, option
+    if question_has_correct_answers(answer.question)
+      if option.correct
+        'bg-success'
+      elsif the_chosen_one?(answer, option)
+        'bg-danger'
+      end
+    end
   end
 
   private

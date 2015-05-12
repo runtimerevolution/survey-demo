@@ -1,21 +1,26 @@
 <div class="container">
-  <h1><%= @attempt.survey.name %></h1>
-  <h5><%= @attempt.survey.description %></h5>
+  <h2>
+    <%= @attempt.survey.name %>
+    <p><small><%= @attempt.survey.description %></small></p>
+  </h2>
   <hr>
-  <% @attempt.answers.each do |answer| %>
-    <p><%= answer.question.text %></p>
-    <% answer.question.options.each do |option| %>
-      <div class="radio">
-        <label>
-          <%= radio_button_tag '', '', the_chosen_one?(answer, option), disabled: true %>
-          <% if option.correct %>
-            <b> <%= option.text %> </b>
-          <% else %>
-            <%= option.text %>
+  <ol class="questions">
+    <% @attempt.answers.each do |answer| %>
+      <li>
+        <p class="question"> <%= answer.question.text %> </p>
+        <ul class="options">
+          <% answer.question.options.each do |option| %>
+            <li class="radio">
+              <label>
+                <%= radio_button_tag '', '', the_chosen_one?(answer, option), disabled: true %>
+                <% color = get_color_of_option(answer, option) %>
+                <span class="<%= color %> <%= the_chosen_one?(answer, option) %>"> <%= option.text %> </span>
+              </label>
+              <p class="answers-number"> <%= number_of_people_who_also_answered(option.id) %> </p>
+            </li>
           <% end %>
-        </label>
-        <p class="answers-number"> <%= number_of_people_who_also_answered(option.id) %> </p>
-      </div>
+        </ul>
+      </li>
     <% end %>
-  <% end %>
+  <ol>
 </div>

@@ -54,8 +54,8 @@
       duration: 'slow',
       progress: function () {
         delta = $(this).outerHeight(true) - last_height
-        last_height = $(this).outerHeight(true);
         $(window).scrollTop( $(window).scrollTop() + delta );
+        last_height = $(this).outerHeight(true);
       },
       complete: function () {
         $(this).find('input[type=text]').focus();

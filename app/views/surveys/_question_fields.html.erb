@@ -7,7 +7,7 @@
       <%= f.text_field :text, placeholder: 'question', class: 'form-control' %>
     </div>
   </div>
-  <ol class='appendable options'>
+  <ol class='appendable'>
     <%= f.fields_for :options do |builder| %>
       <%= render 'option_fields', :f => builder %>
     <% end -%>
