@@ -51,23 +51,53 @@ module SurveysHelper
     "<span class='number'> #{count} </span> #{'answer'.pluralize}".html_safe
   end
 
-  def question_has_correct_answers question
-    question.correct_options.present?
+  def has_correct_answers? question_or_survey
+    question_or_survey.correct_options.present?
   end
 
   def get_color_of_option answer, option
-    if question_has_correct_answers(answer.question)
+    if has_correct_answers?(answer.question)
       if option.correct
         'bg-success'
       elsif the_chosen_one?(answer, option)
         'bg-danger'
       end
+    elsif question_has_weights?(answer.question)
+      get_weight_html option
     end
+  end
+
+  def get_survey_type survey
+    if has_correct_answers?(survey)
+      'quiz'
+    elsif has_weights?(survey)
+      'score'
+    else
+      'poll'
+    end
+  end
+
+  def get_weight option
+    return if has_correct_answers?(option.question) || !question_has_weights?(option.question)
+    option.weight > 0 ? "(+#{option.weight})" : "(#{option.weight})"
+  end
+
+  def get_weight_html option
+    return 'bg-warning' if option.weight == 0
+    option.weight > 0 ? 'bg-success' : 'bg-danger'
+  end
+
+  def question_has_weights? question
+    question.options.any? { |o| o.weight != 0 }
   end
 
   private
 
   def __link_to_function(name, on_click_event, opts={})
     link_to(name, 'javascript:;', opts.merge(onclick: on_click_event))
+  end
+
+  def has_weights? survey
+    survey.questions.map(&:options).flatten.any? { |o| o.weight != 0 }
   end
 end

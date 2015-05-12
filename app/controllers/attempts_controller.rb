@@ -27,7 +27,7 @@ class AttemptsController < ApplicationController
     @attempt.participant = current_user
     if @attempt.valid? && @attempt.save
       correct_options_text = @survey.correct_options.present? ? 'Bellow are the correct answers marked in green' : ''
-      redirect_to attempt_path(@attempt.id), notice: "Congratulation for answering #{@survey.name}! #{correct_options_text}"
+      redirect_to attempt_path(@attempt.id), notice: "Thank you for answering #{@survey.name}! #{correct_options_text}"
     else
       build_flash(@attempt)   
       @participant = current_user

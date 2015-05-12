@@ -13,7 +13,7 @@
               <label>
                 <%= radio_button_tag '', '', the_chosen_one?(answer, option), disabled: true %>
                 <% color = get_color_of_option(answer, option) %>
-                <span class="<%= color %> <%= the_chosen_one?(answer, option) %>"> <%= option.text %> </span>
+                <span class="<%= color %> <%= the_chosen_one?(answer, option) %>"> <%= option.text %> <%= get_weight(option) %> </span>
               </label>
               <p class="answers-number"> <%= number_of_people_who_also_answered(option.id) %> </p>
             </li>

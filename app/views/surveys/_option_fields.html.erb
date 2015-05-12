@@ -4,12 +4,7 @@
       <%= f.label :text, class: 'sr-only' %>
       <%= f.text_field :text, placeholder: 'answer', class: 'form-control' %>
     </div>
-    <div class="checkbox col-xs-3 col-sm-2">
-      <%= f.label :correct do %>
-        <%= f.check_box :correct %>
-        Correct answer
-      <% end %>
-    </div>
+    <%= render "input_#{params[:type]}", f: f %>
     <div class="col-xs-4">
       <%= link_to_remove_field "Remove", f %>
     </div>
