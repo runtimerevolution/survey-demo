@@ -35,8 +35,8 @@ a:focus {
     .question {
       font-size: 16px;
       border-bottom: 1px solid #eee;
-      padding-bottom: 15px;
-      margin-bottom: 15px;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
     }
 
     * {
@@ -48,4 +48,8 @@ a:focus {
 
 .options {
   padding-left: 0;
+}
+
+.survey-title {
+  padding-bottom: 15px;
 }

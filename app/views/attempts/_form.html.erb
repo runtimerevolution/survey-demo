@@ -1,8 +1,7 @@
-<h2>
+<h2 class="survey-title">
   <%= @survey.name %>
   <p><small><%= @attempt.survey.description %></small></p>
 </h2>
-<hr>
 <%= form_for(@attempt, :url => attempt_scope(@attempt)) do |f| %>
   <%= hidden_field_tag :survey_id, @survey.id %>
   <ol class="questions">

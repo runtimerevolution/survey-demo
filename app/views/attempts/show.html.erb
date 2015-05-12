@@ -1,9 +1,8 @@
 <div class="container">
-  <h2>
+  <h2 class="survey-title">
     <%= @attempt.survey.name %>
     <p><small><%= @attempt.survey.description %></small></p>
   </h2>
-  <hr>
   <ol class="questions">
     <% @attempt.answers.each do |answer| %>
       <li>
