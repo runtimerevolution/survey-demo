@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
 
-  before_filter :load_survey, :only => [:show, :edit, :update, :destroy]
+  before_filter :load_survey, only: [:show, :edit, :update, :destroy]
 
   def index
     @surveys = Survey::Survey.all
@@ -15,8 +15,9 @@ class SurveysController < ApplicationController
     if @survey.valid? && @survey.save
       default_redirect
     else
+      @survey_type = params_whitelist[:survey_type].to_i
       build_flash(@survey)
-      render :action => :new
+      render :new
     end
   end
 
@@ -30,8 +31,9 @@ class SurveysController < ApplicationController
     if @survey.update_attributes(params_whitelist)
       default_redirect
     else
+      @survey_type = params_whitelist[:survey_type].to_i
       build_flash(@survey)
-      render :action => :edit
+      render :edit
     end
   end
 
@@ -51,7 +53,7 @@ class SurveysController < ApplicationController
   end
 
   def params_whitelist
-    params.require(:survey_survey).permit(Survey::Survey::AccessibleAttributes)
+    params.require(:survey_survey).permit(Survey::Survey::AccessibleAttributes << :survey_type)
   end
 
 end

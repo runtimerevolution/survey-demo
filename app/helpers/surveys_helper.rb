@@ -51,44 +51,48 @@ module SurveysHelper
     "<span class='number'> #{count} </span> #{'answer'.pluralize}".html_safe
   end
 
-  def has_correct_answers? question_or_survey
-    question_or_survey.correct_options.present?
-  end
-
   def get_color_of_option answer, option
-    if has_correct_answers?(answer.question)
+    if is_quiz?(answer.question.survey.survey_type)
       if option.correct
         'bg-success'
       elsif the_chosen_one?(answer, option)
         'bg-danger'
       end
-    elsif question_has_weights?(answer.question)
+    elsif is_score?(answer.question.survey.survey_type)
       get_weight_html option
     end
   end
 
-  def get_survey_type survey
-    if has_correct_answers?(survey)
-      'quiz'
-    elsif has_weights?(survey)
-      'score'
-    else
-      'poll'
-    end
+  def get_survey_type survey_type
+    get_survey_types[survey_type] || get_survey_types.invert[survey_type]
+  end
+
+  def get_survey_types
+    { 0 => 'quiz',
+      1 => 'score',
+      2 => 'poll' }
+  end
+
+  def is_quiz? something
+    something == 0 || something == 'quiz'
+  end
+
+  def is_score? something
+    something == 1 || something == 'score'
+  end
+
+  def is_poll? something
+    something == 2 || something == 'poll'
   end
 
   def get_weight option
-    return if has_correct_answers?(option.question) || !question_has_weights?(option.question)
+    return unless is_score?(option.question.survey.survey_type)
     option.weight > 0 ? "(+#{option.weight})" : "(#{option.weight})"
   end
 
   def get_weight_html option
     return 'bg-warning' if option.weight == 0
     option.weight > 0 ? 'bg-success' : 'bg-danger'
-  end
-
-  def question_has_weights? question
-    question.options.any? { |o| o.weight != 0 }
   end
 
   private

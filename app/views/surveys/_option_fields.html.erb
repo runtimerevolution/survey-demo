@@ -4,7 +4,7 @@
       <%= f.label :text, class: 'sr-only' %>
       <%= f.text_field :text, placeholder: 'answer', class: 'form-control' %>
     </div>
-    <%= render "input_#{params[:type]}", f: f %>
+    <%= render "input_#{params[:type] || get_survey_type(@survey_type)}", f: f %>
     <div class="col-xs-4">
       <%= link_to_remove_field "Remove", f %>
     </div>
