@@ -14,7 +14,12 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="<%= is_active?(surveys_path) %>"><%= link_to 'All surveys', surveys_path %></li>
+          <li class="<%= is_active?(surveys_path) %>">
+            <%= link_to surveys_path do %>
+              All surveys
+              <span class='badge'> <%= surveys_count %> </span>
+            <% end -%>
+          </li>
           <li class="<%= is_active?(new_survey_path) %>"><%= link_to 'New Survey', new_survey_path %></li>
         </ul>
       </div>

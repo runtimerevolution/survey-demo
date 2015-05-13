@@ -2,6 +2,7 @@
   <div class="questionnaires_<%= action_name %>">
     <h1>
       Surveys
+      <small> (<%= surveys_count %>) </small>
     </h1>
     <hr>
     <%= render partial: 'survey', collection: @surveys %>
