@@ -1,5 +1,8 @@
 <div class="container">
-  <h2>New Survey</h2>
+  <h2>
+    New Survey
+    <small> <span class='label label-survey label-survey-<%= get_survey_type(@survey.survey_type) %>'> <%= get_survey_type(@survey.survey_type).capitalize %> </span> </small>
+  </h2>
   <hr/>
   <%= render 'form' %>
 </div>

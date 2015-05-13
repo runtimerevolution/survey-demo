@@ -1,5 +1,5 @@
 <%= form_for(@survey, url: survey_scope(@survey), html: { class: 'survey-form clearfix' }) do |f| %>
-  <%= f.hidden_field :survey_type, value: get_survey_type(params[:type]) || @survey_type %>
+  <%= f.hidden_field :survey_type, value: @survey.survey_type %>
   <div class='field'>
     <div class='row'>
       <div class='form-group col-sm-4'>
@@ -23,6 +23,10 @@
     </div>
     
     <div class='appendable'>
+      <% if is_score?(@survey.survey_type) %>
+        <br/>
+        <div> In this type of survey, you have to enter a score for each question option (negative values are allowed) </div>
+      <% end -%>
       <%= f.fields_for :questions do |builder| %>
         <%= render 'question_fields', f: builder %>
       <% end %>
