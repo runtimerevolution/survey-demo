@@ -55,3 +55,47 @@ a:focus {
 .survey-title {
   padding-bottom: 15px;
 }
+
+.survey-description {
+  color: grey;
+  font-size: 15px;
+}
+
+.navbar-brand {
+  padding: 10px;
+}
+
+.label-survey {
+  margin-right: 5px;
+  
+  &-quiz {
+    background-color: palevioletred;
+  }
+
+  &-poll {
+    background-color: cadetblue;
+  }
+
+  &-score {
+    background-color: chocolate;
+  }
+}
+
+.survey-table {
+  td {
+    vertical-align: middle !important;
+    min-width: 70px !important;
+  }
+
+  th {
+    text-align: center !important;
+  }
+}
+
+.table-center {
+  text-align: center;
+}
+
+.table-nonfluid {
+  width: auto !important;
+}

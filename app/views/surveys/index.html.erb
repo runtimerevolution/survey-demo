@@ -2,8 +2,21 @@
   <div class="questionnaires_<%= action_name %>">
     <h1>
       Surveys
+      <small> (<%= surveys_count %>) </small>
     </h1>
     <hr>
-    <%= render partial: 'survey', collection: @surveys %>
+    <table class='table table-nonfluid survey-table' align='left'>
+      <thead>
+        <tr>
+          <th>Delete</th>
+          <th>Edit</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'survey', collection: @surveys %>
+      </tbody>
+    </table>
   </div>
 </div>

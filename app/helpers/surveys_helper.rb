@@ -95,6 +95,10 @@ module SurveysHelper
     option.weight > 0 ? 'bg-success' : 'bg-danger'
   end
 
+  def surveys_count
+    Survey::Survey.count
+  end
+
   private
 
   def __link_to_function(name, on_click_event, opts={})
