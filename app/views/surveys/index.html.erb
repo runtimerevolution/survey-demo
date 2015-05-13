@@ -2,17 +2,17 @@
   <div class="questionnaires_<%= action_name %>">
     <h1>
       Surveys
-      <small> (<%= surveys_count %>) </small>
+      <small> (<%= @surveys.count %>) </small>
     </h1>
     <hr>
-    <table class='table table-nonfluid survey-table' align='left'>
+    <%= render partial: 'survey_label', collection: get_survey_types.keys, as: :survey_type %>
+    <table class='table table-nonfluid survey-table'>
       <thead>
         <tr>
-          <th>Delete</th>
-          <th>Edit</th>
-          <th>Name</th>
           <th>Type</th>
+          <th>Name</th>
           <th>Description</th>
+          <th>Options</th>
         </tr>
       </thead>
       <tbody>

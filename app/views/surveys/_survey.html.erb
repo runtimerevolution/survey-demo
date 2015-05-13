@@ -1,17 +1,18 @@
 <tr class="survey">
+  <td> <h4 class="survey-name"> <%= link_to survey.name, new_attempt_path(survey_id: survey.id), class: 'survey-name' %> </h4> </td>
+  <td class="table-center"> <%= render 'survey_label', survey_type: survey.survey_type %> </td>
+  <td> <span class="survey-description"> <%= "#{survey.description}" %> </span> </td>
+  
   <td class="table-center">
-    <%= link_to survey_path(survey.id), class: 'btn btn-default', method: :delete, data: {confirm: "Are you sure you want to delete this survey?"} do %>
-      <i class="fa fa-times"></i>
-    <% end %>
-  </td>
+    <div class="btn-group" role="group">
+      <%= link_to edit_survey_path(survey.id), class: 'btn btn-default btn-xs' do %>
+        <i class="fa fa-pencil-square-o"></i>
+      <% end %>
 
-  <td class="table-center">
-    <%= link_to edit_survey_path(survey.id), class: 'btn btn-default' do %>
-      <i class="fa fa-pencil-square-o"></i>
-    <% end %>
+      <%= link_to survey_path(survey.id), class: 'btn btn-default btn-xs', method: :delete, data: {confirm: "Are you sure you want to delete this survey?"} do %>
+        <i class="fa fa-times"></i>
+      <% end %>
+    </div>
   </td>
   
-  <td> <h4 class="survey-name"> <%= link_to survey.name, new_attempt_path(survey_id: survey.id), class: 'survey-name' %> </h4> </td>
-  <td class="table-center"> <span class='label label-survey label-survey-<%= get_survey_type(survey.survey_type) %>'> <%= get_survey_type(survey.survey_type).capitalize %> </span> </td>
-  <td> <span class="survey-description"> <%= "#{survey.description}" %> </span> </td>
 </tr>

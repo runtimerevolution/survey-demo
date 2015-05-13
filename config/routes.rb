@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources 'attempts'
 
   delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts
+  get 'surveys/type/:type' => 'surveys#filter_by_type', as: :filter_by_type
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

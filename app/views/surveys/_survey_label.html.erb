@@ -1,0 +1,5 @@
+<%= link_to filter_by_type_path(get_survey_type(survey_type)) do %>
+  <span class='label label-survey label-survey-<%= get_survey_type(survey_type) %>'>
+    <%= get_survey_type(survey_type).capitalize %>
+  </span>
+<% end -%>

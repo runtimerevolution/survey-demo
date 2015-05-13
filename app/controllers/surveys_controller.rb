@@ -6,6 +6,11 @@ class SurveysController < ApplicationController
     @surveys = Survey::Survey.all
   end
 
+  def filter_by_type
+    @surveys = Survey::Survey.where(survey_type: view_context.get_survey_type(params[:type]))
+    render :index
+  end
+
   def new
     @survey = Survey::Survey.new(survey_type: view_context.get_survey_type(params[:type]))
   end
