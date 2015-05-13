@@ -8,11 +8,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <%= link_to 'http://www.runtime-revolution.com', target: '_blank', class: 'navbar-brand' do %>
+          <%= image_tag 'runtime-revolution', height: 35 %>
+        <% end -%>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="<%= is_active?(surveys_path) %>"><%= link_to 'All surveys', surveys_path %></li>
           <li class="<%= is_active?(new_survey_path) %>"><%= link_to 'New Survey', new_survey_path %></li>
+        </ul>
       </div>
     </div>
   </div>
