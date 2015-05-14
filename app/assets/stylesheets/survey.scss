@@ -126,3 +126,16 @@ a:focus {
 .table-nonfluid {
   width: auto !important;
 }
+
+#logo-img {
+  display: inline-block;
+  width: 35px;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+#logo-text{
+  display: inline-block;
+  height: 20px;
+  vertical-align: middle;
+}
