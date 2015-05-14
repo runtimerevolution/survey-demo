@@ -69,15 +69,40 @@ a:focus {
   margin-right: 5px;
   
   &-quiz {
-    background-color: palevioletred;
+    background-color: #5B618A;
   }
 
   &-poll {
-    background-color: cadetblue;
+    background-color: #7CAE7A;
   }
 
   &-score {
-    background-color: chocolate;
+    background-color: #B26E63;
+  }
+}
+
+.label-with-badges {
+  padding: 5px 10px;
+}
+
+.label-badge {
+  display: inline-block;
+  line-height: 1em;
+  white-space: pre;
+  border-radius: 50%;
+  padding: 1px 1px;
+  background-color: white;
+
+  &-quiz {
+    color: #5B618A;
+  }
+
+  &-poll {
+    color: #7CAE7A;
+  }
+
+  &-score {
+    color: #B26E63;
   }
 }
 
@@ -86,12 +111,11 @@ a:focus {
 
   td {
     vertical-align: middle !important;
-    min-width: 70px !important;
   }
+}
 
-  th {
-    text-align: center !important;
-  }
+.survey-buttons {
+  min-width: 150px;
 }
 
 .table-center {

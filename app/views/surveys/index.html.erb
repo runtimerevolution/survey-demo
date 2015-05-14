@@ -2,22 +2,28 @@
   <div class="questionnaires_<%= action_name %>">
     <h1>
       Surveys
-      <small> (<%= @surveys.count %>) </small>
     </h1>
     <hr>
-    <%= render partial: 'survey_label', collection: get_survey_types.keys, as: :survey_type %>
-    <table class='table table-nonfluid survey-table'>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: 'survey', collection: @surveys %>
-      </tbody>
-    </table>
+    <% if @surveys.empty? %>
+      <p> There are no surveys </p>
+    <% else %>
+      <p>
+        Filter by type:
+        <%= render partial: 'survey_label', collection: get_survey_types.keys, as: :survey_type, locals: { with_badges: true } %>
+      </p>
+      <table class='table table-nonfluid survey-table'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'survey', collection: @surveys %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 </div>

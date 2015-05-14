@@ -95,8 +95,8 @@ module SurveysHelper
     option.weight > 0 ? 'bg-success' : 'bg-danger'
   end
 
-  def surveys_count
-    Survey::Survey.count
+  def surveys_count type = get_survey_types.keys
+    Survey::Survey.where(survey_type: type).count
   end
 
   private

@@ -17,7 +17,7 @@
           <li class="<%= is_active?(surveys_path) %>">
             <%= link_to surveys_path do %>
               All surveys
-              <span class='badge'> <%= @surveys.try(:count) || surveys_count %> </span>
+              <span class='badge'> <%= surveys_count %> </span>
             <% end -%>
           </li>
           <li class="dropdown <%= is_active?(new_survey_path) %>">
