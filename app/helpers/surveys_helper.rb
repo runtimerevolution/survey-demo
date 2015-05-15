@@ -104,7 +104,11 @@ module SurveysHelper
   end
 
   def number_of_attempts survey, user
-    survey.attempts.for_participant(user).count
+    if user
+      survey.attempts.for_participant(user).count
+    else
+      0
+    end
   end
 
   private
