@@ -1,0 +1,18 @@
+<div id="submit-name-modal" class="modal fade show" data-backdrop="static" data-show="true">
+  <%= form_for User.new do |f| %>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Fill your name</h4>
+        </div>
+        <div class="modal-body">
+          <%= f.label :name, class: 'sr-only' %>
+          <%= f.text_field :name, placeholder: 'name', class: 'form-control' %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

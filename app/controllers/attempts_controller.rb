@@ -54,7 +54,6 @@ class AttemptsController < ApplicationController
   end
 
   def current_user
-    session[:user_id] ||= User.create.id
-    User.find(session[:user_id])
+    view_context.current_user
   end
 end

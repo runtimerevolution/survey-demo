@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'surveys#index'
   resources 'surveys'
   resources 'attempts'
+  resources 'users', only: [:create]
 
   delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts
   get 'surveys/type/:type' => 'surveys#filter_by_type', as: :filter_by_type
