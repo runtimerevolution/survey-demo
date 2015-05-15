@@ -99,6 +99,10 @@ module SurveysHelper
     Survey::Survey.where(survey_type: type).count
   end
 
+  def number_of_questions survey
+    survey.questions.count
+  end
+
   private
 
   def __link_to_function(name, on_click_event, opts={})
