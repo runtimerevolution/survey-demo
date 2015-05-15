@@ -20,6 +20,11 @@ module ApplicationHelper
     current_page?(link_path) ? 'active' : nil
   end
 
+  def current_user
+    session[:user_id] ||= User.create.id
+    User.find(session[:user_id])
+  end
+
   private
   
   def number_of_people_who_also_answered_count option_id

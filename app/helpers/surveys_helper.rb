@@ -103,6 +103,10 @@ module SurveysHelper
     survey.questions.count
   end
 
+  def number_of_attempts survey, user
+    survey.attempts.for_participant(user).count
+  end
+
   private
 
   def __link_to_function(name, on_click_event, opts={})

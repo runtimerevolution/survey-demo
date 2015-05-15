@@ -1,8 +1,9 @@
 <tr class="survey">
   <td class="table-center"> <%= render 'survey_label', survey_type: survey.survey_type %> </td>
-  <td class="table-center"> <%= number_of_questions(survey) %> </td>
   <td> <%= link_to survey.name, new_attempt_path(survey_id: survey.id), class: 'survey-name' %> </td>
   <td> <span class="survey-description"> <%= "#{survey.description}" %> </span> </td>
+  <td class="table-center"> <%= number_of_questions(survey) %> </td>
+  <td class="table-center"> <%= number_of_attempts(survey, current_user) %> </td>
   
   <td class="table-center survey-buttons">
     <div class="btn-group" role="group">
