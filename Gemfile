@@ -25,7 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'puma'
 gem 'survey'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
+gem 'html5_validators'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
