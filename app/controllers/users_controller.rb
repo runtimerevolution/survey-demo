@@ -4,6 +4,12 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
+  def change_name
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to :back
+  end
+
   def user_params
     params.require(:user).permit(:name)
   end

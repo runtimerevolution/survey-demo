@@ -4,4 +4,7 @@
 
 $(document).on "ready page:load", ->
 
-  $('#submit-name-modal').modal('show')
+  new_user = $('#submit-name-modal').data('new-user')
+  modal_options = if new_user then { backdrop: 'static' } else { show: false }
+
+  $('#submit-name-modal').modal(modal_options)

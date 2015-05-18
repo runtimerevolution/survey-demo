@@ -103,12 +103,8 @@ module SurveysHelper
     survey.questions.count
   end
 
-  def number_of_attempts survey, user
-    if user
-      survey.attempts.for_participant(user).count
-    else
-      0
-    end
+  def number_of_attempts survey
+    survey.attempts.count
   end
 
   private

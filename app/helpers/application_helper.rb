@@ -21,7 +21,14 @@ module ApplicationHelper
   end
 
   def current_user
-    User.find_by(id: session[:user_id])
+    @user ||= User.find_by(id: session[:user_id])
+  end
+
+  def user_form
+    form_options = current_user ? [current_user, url: change_user_name_path(current_user.id), method: :post] : User.new
+    form_for *form_options do |f|
+      yield f
+    end
   end
 
   private
