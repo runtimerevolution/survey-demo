@@ -1,4 +1,4 @@
-<%= form_for(@survey, url: survey_scope(@survey), html: { class: 'survey-form clearfix' }) do |f| %>
+<%= form_for(@survey, url: survey_scope(@survey), html: { class: 'survey-form clearfix' }, validate: true) do |f| %>
   <%= f.hidden_field :survey_type, value: @survey.survey_type %>
   <div class='field'>
     <div class='row'>
@@ -18,7 +18,7 @@
     <div class='row'>
       <div class='form-group col-sm-12'>
         <%= f.label :description %>
-        <%= f.text_area :description, :size => '100x5', class: 'form-control', style: 'max-width: 100%;' %>
+        <%= f.text_area :description, size: '100x5', class: 'form-control', style: 'max-width: 100%;' %>
       </div>
     </div>
     

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/DavyJonesLocker/client_side_validations.git
+  revision: 5c1c63e3deb62f1578e1a0b1ad9d4302a4e0fc56
+  specs:
+    client_side_validations (4.2.0)
+      jquery-rails (>= 3.1.2, < 5.0.0)
+      rails (>= 4.0.0, < 4.3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,7 +72,6 @@ GEM
     execjs (2.5.2)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    html5_validators (1.2.0)
     i18n (0.7.0)
     interception (0.5)
     jbuilder (2.2.13)
@@ -187,8 +194,8 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
+  client_side_validations!
   coffee-rails (~> 4.1.0)
-  html5_validators
   jbuilder (~> 2.0)
   jquery-rails
   pg

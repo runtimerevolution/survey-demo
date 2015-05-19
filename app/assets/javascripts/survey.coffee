@@ -8,3 +8,6 @@ $(document).on "ready page:load", ->
   modal_options = if new_user then { backdrop: 'static' } else { show: false }
 
   $('#submit-name-modal').modal(modal_options)
+
+  $('#submit-name-modal').on 'shown.bs.modal', ->
+    $('.user-form').enableClientSideValidations();

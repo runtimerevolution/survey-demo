@@ -25,7 +25,8 @@ module ApplicationHelper
   end
 
   def user_form
-    form_options = current_user ? [current_user, url: change_user_name_path(current_user.id), method: :post] : User.new
+    common_options = { validate: true, html: { class: 'user-form' } }
+    form_options = current_user ? [ current_user, { url: change_user_name_path(current_user.id), method: :post, validate: true }.merge(common_options) ] : [ User.new, { validate: true }.merge(common_options) ]
     form_for *form_options do |f|
       yield f
     end
