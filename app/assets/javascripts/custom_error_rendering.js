@@ -50,7 +50,7 @@ window.ClientSideValidations.formBuilders['ActionView::Helpers::FormBuilder'] = 
       // label.detach(); don't detach label
       
 
-      errorLabel = form.find("label.message[for='" + (element.attr('id')) + "']").detach();
+      form.find("label.message[for='" + (element.attr('id')) + "']").detach();
       $(element).closest('.input-group, .form-group').removeClass('has-error'); // for bootstrap
       
 

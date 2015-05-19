@@ -4,11 +4,14 @@
       <div class="modal-content">
         <div class="modal-body">
           <h4> <%= f.label :name, 'What\'s your name?' %> </h4>
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="fa fa-user"></i>
-            </span>
-            <%= f.text_field :name, class: 'form-control' %>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </span>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <span class="help-block">This name will be associated with each survey participation you make</span>
           </div>
         </div>
         <div class="modal-footer">
