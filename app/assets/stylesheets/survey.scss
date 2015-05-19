@@ -91,11 +91,8 @@ a:focus {
 }
 
 .label-badge {
-  display: inline-block;
-  line-height: 1em;
-  white-space: pre;
-  border-radius: 50%;
-  padding: 1px 1px;
+  padding: 2px 5px;
+  font-size: 10px;
   background-color: white;
 
   &-quiz {

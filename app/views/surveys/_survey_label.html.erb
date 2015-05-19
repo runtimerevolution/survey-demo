@@ -2,9 +2,9 @@
 <% with_badges ||= nil %>
 <% if !with_badges || (with_badges && surveys_count(survey_type) > 0) %>
   <%= link_to filter_by_type_path(string_type), class: "label label-survey label-survey-#{string_type} #{'label-with-badges' if with_badges}" do %>
-    <span> <%= string_type.capitalize %> </span>
+    <span><%= string_type.capitalize %></span>
     <% if with_badges %>
-      <span class='label-badge label-badge-<%= string_type %>'> <%= surveys_count(survey_type) %> </span>
+      <span class='badge label-badge label-badge-<%= string_type %>'><%= surveys_count(survey_type) %></span>
     <% end %>
   <% end %>
 <% end %>
