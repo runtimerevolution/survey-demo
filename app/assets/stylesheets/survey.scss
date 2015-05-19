@@ -79,6 +79,10 @@ a:focus {
   &-score {
     background-color: #B26E63;
   }
+
+  &-all {
+    background-color: grey;
+  }
 }
 
 .label-with-badges {
@@ -104,6 +108,10 @@ a:focus {
 
   &-score {
     color: #B26E63;
+  }
+
+  &-all {
+    color: grey;
   }
 }
 

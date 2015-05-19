@@ -43,7 +43,7 @@ module SurveysHelper
   end
 
   def the_chosen_one? answer, option
-    answer.option_id == option.id ? 'chosen' : nil
+    if answer.option_id == option.id then 'chosen' else nil end
   end
 
   def number_of_people_who_also_answered option_id
@@ -59,7 +59,7 @@ module SurveysHelper
         'bg-danger'
       end
     elsif is_score?(answer.question.survey.survey_type)
-      get_weight_html option
+      get_weight_html_class option
     end
   end
 
@@ -90,7 +90,7 @@ module SurveysHelper
     option.weight > 0 ? "(+#{option.weight})" : "(#{option.weight})"
   end
 
-  def get_weight_html option
+  def get_weight_html_class option
     return 'bg-warning' if option.weight == 0
     option.weight > 0 ? 'bg-success' : 'bg-danger'
   end
