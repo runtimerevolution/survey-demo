@@ -3,7 +3,7 @@ class SurveysController < ApplicationController
   before_filter :load_survey, only: [:show, :edit, :update, :destroy]
 
   def index
-    @surveys = Survey::Survey.all
+    @surveys = Survey::Survey.order(:created_at).page(params[:page])
   end
 
   def filter_by_type
