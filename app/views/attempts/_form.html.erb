@@ -2,7 +2,7 @@
   <%= @survey.name %>
   <p><small><%= @attempt.survey.description %></small></p>
 </h2>
-<%= form_for(@attempt, url: attempt_scope(@attempt)) do |f| %>
+<%= form_for @attempt, url: attempt_scope(@attempt) do |f| %>
   <%= hidden_field_tag :survey_id, @survey.id %>
   <ol class="questions">
     <%= f.fields_for :answers, get_answer_fields(@attempt) do |answer_fields| %>

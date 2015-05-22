@@ -1,19 +1,14 @@
 <tr class="survey">
-  <td class="table-center"> <%= render 'survey_label', survey_type: survey.survey_type %> </td>
-  <td> <%= link_to survey.name, new_attempt_path(survey_id: survey.id), class: 'survey-name' %> </td>
-  <td> <span class="survey-description"> <%= "#{survey.description}" %> </span> </td>
-  <td class="table-center"> <%= number_of_questions(survey) %> </td>
-  <td class="table-center"> <%= number_of_attempts(survey) %> </td>
+  <td class="table-center"> <%= survey.type %> </td>
+  <td> <%= survey.name_link %> </td>
+  <td> <span class="survey-description"> <%= survey.description %> </span> </td>
+  <td class="table-center"> <%= survey.number_of_questions %> </td>
+  <td class="table-center"> <%= survey.number_of_attempts %> </td>
   
   <td class="table-center survey-buttons">
     <div class="btn-group" role="group">
-      <%= link_to edit_survey_path(survey.id), class: 'btn btn-default btn-sm' do %>
-        <i class="fa fa-pencil-square-o"> Edit</i>
-      <% end %>
-
-      <%= link_to survey_path(survey.id), class: 'btn btn-default btn-sm', method: :delete, data: {confirm: "Are you sure you want to delete this survey?"} do %>
-        <i class="fa fa-trash-o"> Delete</i>
-      <% end %>
+      <%= survey.edit_button %>
+      <%= survey.delete_button %>
     </div>
   </td>
 </tr>

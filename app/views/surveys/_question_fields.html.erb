@@ -2,10 +2,7 @@
   <hr/>
   <h4>Question</h4>
   <div class='row'>
-    <div class='form-group col-sm-4'>
-      <%= f.label :text, class: 'sr-only' %>
-      <%= f.text_field :text, placeholder: 'question', class: 'form-control' %>
-    </div>
+    <%= form_field_with_label f, :text, :text_field, group_class: 'col-sm-4', field_options: { placeholder: 'question' }, label_options: { class: 'sr-only' } %>
   </div>
   <ol class='appendable'>
     <%= f.fields_for :options do |builder| %>

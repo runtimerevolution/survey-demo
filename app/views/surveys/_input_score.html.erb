@@ -1,4 +1,1 @@
-<div class='form-group col-xs-3 col-sm-2'>
-  <%= f.label :weight, class: 'sr-only' %>
-  <%= f.number_field :weight, placeholder: 'weight', class: 'form-control' %>
-</div>
+<%= form_field_with_label f, :weight, :number_field, group_class: 'col-xs-3 col-sm-2', field_options: { placeholder: 'weight' }, label_options: { class: 'sr-only' } %>

@@ -1,7 +1,8 @@
 <div class="container">
   <h2>
     Edit Survey
-    <small> <%= render 'survey_label', survey_type: @survey.survey_type %> </small>
+    <small> <%= @survey.type %> </small>
   </h2>
+  <hr/>
   <%= render 'form' %>
 </div>

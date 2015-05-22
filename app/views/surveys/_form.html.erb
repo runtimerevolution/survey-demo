@@ -2,31 +2,16 @@
   <%= f.hidden_field :survey_type, value: @survey.survey_type %>
   <div class='field'>
     <div class='row'>
-      <div class='form-group col-sm-4'>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-      <div class='form-group col-sm-4'>
-        <%= f.label :attempts_number, 'Maximum number of attempts (0 is infinite)' %>
-        <%= f.number_field :attempts_number, min: 0, class: 'form-control' %>
-      </div>
-      <div class='form-group col-sm-4'>
-        <%= f.label :active %>
-        <%= f.select :active, ['true', 'false'], {}, class: 'form-control' %>
-      </div>
+      <%= form_field_with_label f, :name,            :text_field,   group_class: 'col-sm-4' %>
+      <%= form_field_with_label f, :attempts_number, :number_field, group_class: 'col-sm-4', field_options: { min: 0 }, label_name: 'Maximum number of attempts (0 is infinite)' %>
+      <%= form_field_with_label f, :active,          :select,       group_class: 'col-sm-4', field_arguments: [ ['true', 'false'], {} ] %>
     </div>
     <div class='row'>
-      <div class='form-group col-sm-12'>
-        <%= f.label :description %>
-        <%= f.text_area :description, size: '100x5', class: 'form-control', style: 'max-width: 100%;' %>
-      </div>
+      <%= form_field_with_label f, :description,     :text_area,    group_class: 'col-sm-12', field_options: { size: '100x5' } %>
     </div>
     
     <div class='appendable'>
-      <% if is_score?(@survey.survey_type) %>
-        <br/>
-        <div> In this type of survey, you have to enter a score for each question option (negative values are allowed) </div>
-      <% end -%>
+      <%= @survey.score_message %>
       <%= f.fields_for :questions do |builder| %>
         <%= render 'question_fields', f: builder %>
       <% end %>
@@ -35,8 +20,7 @@
     <%= link_to_add_field 'Add a new Question', f, :questions %>
   </div>
   <%= f.submit 'Submit', class: 'pull-right btn btn-primary' %>
-  <% end -%>
-</div>
+<% end -%>
 
 <script type='text/javascript'>
   // remove attachment field

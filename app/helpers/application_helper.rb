@@ -8,9 +8,9 @@ module ApplicationHelper
   def correct_flash_name name
     case name
     when 'alert'
-      'danger'
+      :danger
     when 'notice'
-      'success'
+      :success
     else
       name
     end

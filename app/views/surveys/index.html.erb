@@ -9,8 +9,7 @@
     <% else %>
       <p>
         Filter by type:
-        <%= render 'survey_label_all' %>
-        <%= render partial: 'survey_label', collection: get_survey_types.keys, as: :survey_type, locals: { with_badges: true } %>
+        <%= render partial: 'survey_label', collection: get_labels, as: :survey_type, locals: { with_badges: true } %>
       </p>
       <table class='table table-nonfluid survey-table'>
         <thead>
@@ -18,8 +17,8 @@
             <th></th>
             <th>Name</th>
             <th>Description</th>
-            <th>Questions</th>
-            <th>Participants</th>
+            <th># Questions</th>
+            <th># Participants</th>
             <th></th>
           </tr>
         </thead>

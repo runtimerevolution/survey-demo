@@ -26,9 +26,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma' # app server
 gem 'survey' # our gem
 gem 'twitter-bootstrap-rails'
+gem 'bh' #bootstrap helpers
 gem 'kaminari' # pagination
 gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations' # validates forms on the client side
 gem 'newrelic_rpm' # new relic instrumentation (heroku plugin)
+gem 'draper' # decorators/view-models
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

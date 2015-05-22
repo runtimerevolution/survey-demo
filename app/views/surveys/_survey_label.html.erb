@@ -1,10 +1,2 @@
-<% string_type ||= get_survey_type(survey_type) %>
 <% with_badges ||= nil %>
-<% if !with_badges || (with_badges && surveys_count(survey_type) > 0) %>
-  <%= link_to surveys_path(type: string_type), class: "label label-survey label-survey-#{string_type} #{'label-with-badges' if with_badges}" do %>
-    <span><%= string_type.capitalize %></span>
-    <% if with_badges %>
-      <span class='badge label-badge label-badge-<%= string_type %>'><%= surveys_count(survey_type) %></span>
-    <% end %>
-  <% end %>
-<% end %>
+<%= survey_label get_survey_type_string(survey_type), with_badges %>

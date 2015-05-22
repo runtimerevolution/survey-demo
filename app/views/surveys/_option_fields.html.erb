@@ -1,10 +1,7 @@
 <div class="field">
   <div class="row">
-    <div class="form-group col-xs-4">
-      <%= f.label :text, class: 'sr-only' %>
-      <%= f.text_field :text, placeholder: 'answer', class: 'form-control' %>
-    </div>
-    <%= render "input_#{get_survey_type(@survey.survey_type)}", f: f %>
+    <%= form_field_with_label f, :text, :text_field, group_class: 'col-xs-4', field_options: { placeholder: 'answer' }, label_options: { class: 'sr-only' } %>
+    <%= @survey.render_proper_input f %>
     <div class="col-xs-4">
       <%= link_to_remove_field "Remove", f %>
     </div>

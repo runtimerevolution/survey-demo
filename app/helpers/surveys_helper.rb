@@ -63,14 +63,22 @@ module SurveysHelper
     end
   end
 
-  def get_survey_type survey_type
-    get_survey_types[survey_type] || get_survey_types.invert[survey_type]
+  def get_survey_type_string survey_type
+    get_survey_types[survey_type] || survey_type
+  end
+
+  def get_survey_type_number survey_type
+    get_survey_types.invert[survey_type] || survey_type
   end
 
   def get_survey_types
     { 0 => 'quiz',
       1 => 'score',
       2 => 'poll' }
+  end
+
+  def get_labels
+    ['all'] + get_survey_types.values
   end
 
   def is_quiz? something
@@ -99,12 +107,14 @@ module SurveysHelper
     Survey::Survey.where(survey_type: type).count
   end
 
-  def number_of_questions survey
-    survey.questions.count
-  end
-
-  def number_of_attempts survey
-    survey.attempts.count
+  def survey_label type = 'all', with_badges = true
+    count = if type == 'all' then surveys_count else surveys_count(get_survey_type_number(type)) end
+    if !with_badges || (with_badges && count > 0)
+      link_to surveys_path(type: type), class: "label label-survey label-survey-#{type} #{'label-with-badges' if with_badges}" do
+        concat content_tag(:span, "#{type.capitalize} ")
+        concat (if with_badges then content_tag :span, count, class: "badge label-badge label-badge-#{type}" end)
+      end
+    end
   end
 
   private

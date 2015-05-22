@@ -3,13 +3,13 @@ class SurveysController < ApplicationController
   before_filter :load_survey, only: [:show, :edit, :update, :destroy]
 
   def index
-    type = view_context.get_survey_type(params[:type])
-    query = if type then Survey::Survey.where(survey_type: type) else Survey::Survey end
-    @surveys = query.order(created_at: :desc).page(params[:page]).per(15)
+    type = view_context.get_survey_type_number(params[:type])
+    query = if type && type.is_a?(Integer) then Survey::Survey.where(survey_type: type) else Survey::Survey end
+    @surveys = query.order(created_at: :desc).page(params[:page]).per(15).decorate
   end
 
   def new
-    @survey = Survey::Survey.new(survey_type: view_context.get_survey_type(params[:type]))
+    @survey = Survey::Survey.new(survey_type: view_context.get_survey_type_number(params[:type])).decorate
   end
 
   def create
@@ -49,7 +49,7 @@ class SurveysController < ApplicationController
   end
 
   def load_survey
-    @survey = Survey::Survey.find(params[:id])
+    @survey = Survey::Survey.find(params[:id]).decorate
   end
 
   def params_whitelist
