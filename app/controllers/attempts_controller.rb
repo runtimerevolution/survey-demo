@@ -43,7 +43,7 @@ class AttemptsController < ApplicationController
   private
 
   def load_survey
-    @survey = Survey::Survey.find_by(id: params[:survey_id])
+    @survey = Survey::Survey.find_by(id: params[:survey_id]).try(:decorate)
   end
 
   def params_whitelist

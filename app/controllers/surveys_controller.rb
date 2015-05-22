@@ -17,7 +17,7 @@ class SurveysController < ApplicationController
     if @survey.valid? && @survey.save
       default_redirect
     else
-      build_flash(@survey)
+      build_flash(@survey = @survey.decorate)
       render :new
     end
   end

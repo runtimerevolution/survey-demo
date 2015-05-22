@@ -36,11 +36,24 @@ class Survey::SurveyDecorator < Draper::Decorator
     end
   end
 
+  def render_survey participant
+    if self.avaliable_for_participant?(participant) then h.render 'form' else reset_attempts_message end
+  end
+
   private
 
   def generic_button path, name, icon_id, link_options: {}
     h.link_to path, link_options.merge(class: 'btn btn-default btn-sm') do
       h.content_tag :i, " #{name}", class: "fa fa-#{icon_id}"
+    end
+  end
+
+  def reset_attempts_message
+    h.content_tag(:p, 'You have spent all the possible attempts to answer this Survey') <<
+    h.content_tag(:p) do
+      h.link_to h.delete_user_attempts_path(self.id, h.session[:user_id]), method: :delete do
+        'Click here to reset the attempts'
+      end
     end
   end
 end
