@@ -1,4 +1,4 @@
-class CreateSurvey < ActiveRecord::Migration
+class CreateSurvey < ActiveRecord::Migration[7.0]
   def self.up
 
     # survey surveys logic

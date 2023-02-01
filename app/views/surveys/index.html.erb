@@ -10,7 +10,7 @@
       <p>
         Filter by type:
         <%= render 'survey_label_all' %>
-        <%= render partial: 'survey_label', collection: get_survey_types.keys, as: :survey_type, locals: { with_badges: true } %>
+        <%= render partial: 'survey_label', collection: SurveysHelper::SURVEY_TYPES, as: :survey_type, locals: { with_badges: true } %>
       </p>
       <table class='table table-nonfluid survey-table'>
         <thead>

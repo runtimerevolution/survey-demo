@@ -1,10 +1,12 @@
-class SurveysController < ApplicationController
+# frozen_string_literal: true
 
-  before_filter :load_survey, only: [:show, :edit, :update, :destroy]
+# Class SurveysController
+class SurveysController < ApplicationController
+  before_action :load_survey, only: %i[show edit update destroy]
 
   def index
     type = view_context.get_survey_type(params[:type])
-    query = if type then Survey::Survey.where(survey_type: type) else Survey::Survey end
+    query = type ? Survey::Survey.where(survey_type: type) : Survey::Survey
     @surveys = query.order(created_at: :desc).page(params[:page]).per(15)
   end
 
@@ -22,14 +24,12 @@ class SurveysController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
   def update
-    if @survey.update_attributes(params_whitelist)
+    if @survey.update(params_whitelist)
       default_redirect
     else
       build_flash(@survey)
@@ -38,6 +38,8 @@ class SurveysController < ApplicationController
   end
 
   def destroy
+    return unless current_user
+    
     @survey.destroy
     default_redirect
   end
@@ -55,5 +57,4 @@ class SurveysController < ApplicationController
   def params_whitelist
     params.require(:survey_survey).permit(Survey::Survey::AccessibleAttributes << :survey_type)
   end
-
 end
