@@ -53,7 +53,7 @@ gem 'mini_racer', platforms: :ruby
 
 gem 'rails_admin', '~> 3.0'
 
-gem 'survey', path: '../survey'
+gem 'survey'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

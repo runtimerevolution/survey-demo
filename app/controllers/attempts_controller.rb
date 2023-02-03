@@ -15,9 +15,7 @@ class AttemptsController < ApplicationController
     render :access_error if current_user.id != @attempt.participant_id
   end
 
-  def destroy
-    debugger
-  end
+  def destroy; end
 
   def new
     @participant = current_user
